@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Elige el día de nuestra cita</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    body {
+      background: url('https://wallpapers.com/images/hd/pastel-watercolor-background-umwvzsva97niwggl.jpg') center bottom no-repeat;
+      background-size: cover;
+      font-family: 'Press Start 2P', cursive;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      text-align: center;
+      position: relative;
+    }
+
+    h1 {
+      margin: 10px 0 5px 0;
+      margin-top: 50px;
+      font-size: 25px;
+      color:rgb(45, 10, 78);
+    }
+
+    input[type="date"] {
+      font-family: 'Press Start 2P', cursive;
+      font-size: 12px;
+      padding: 10px;
+      border: 2px solid #000;
+      background-color: #4798d2;
+      color: #000;
+      margin-top: 20px;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-family: 'Press Start 2P', cursive;
+      background-color: #9a47a3;
+      color: #000;
+      border: 3px solid #000;
+      box-shadow: 3px 3px 0 #000;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #7a1da2;
+      transform: translate(2px, 2px);
+    }
+
+    /* Corazones fuegos artificiales */
+    .corazon-fuego {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      background-image: url('corazon_sin_fondo.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      animation: explotar 1s ease-out forwards;
+      pointer-events: none;
+      z-index: 999;
+    }
+
+    @keyframes explotar {
+      0% {
+        transform: scale(0) translateY(0);
+        opacity: 1;
+      }
+      50% {
+        transform: scale(1.5) translateY(-50px);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(0.8) translateY(-100px);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+   <h1>Elige el día de nuestra cita 💕</h1>
+  <input type="date" id="fechaCita">
+  <button onclick="mostrarMenu()">Siguiente</button>
+
+  <div id="menuComida" style="display:none; margin-top: 20px;">
+    <h1 style="font-size: 14px;">Dame una pista de qué te gustaría comer 🍕🍣🍜</h1>
+    <select id="opcionComida">
+      <option value="">-- Elige una opción --</option>
+      <option value="En un lugar con temática">En un lugar con temática 👒</option>
+      <option value="Comida Japonesa">Comida Japonesa 🍣🍜</option>
+      <option value="Comida gordo gordo">Comida gordo gordo 🍔🍕</option>
+      <option value="Garnachitas">Garnachitas 🌮</option>
+    </select>
+    <br>
+    <h1 style="font-size: 14px;">Primero confirma la cita y después copia para enviarmelo c:</h1>
+    <button onclick="confirmarCita()">Confirmar cita</button>
+    <button onclick="copiarMensaje()">📋 Copiar para enviar a Karen</button>
+
+  </div>
+
+  <script>
+    function mostrarMenu() {
+      const fecha = document.getElementById('fechaCita').value;
+      if (fecha) {
+        localStorage.setItem('citaElegida', fecha);
+        document.getElementById('menuComida').style.display = 'block';
+      } else {
+        alert("Tienes que elegir una fechaaaaa");
+      }
+    }
+
+    function confirmarCita() {
+      const comida = document.getElementById('opcionComida').value;
+      if (!comida) {
+        alert("Elige una comida, no podemos tener una cita con el estómago vacío 🍽️");
+        return;
+      }
+
+      localStorage.setItem('comidaElegida', comida);
+      lanzarCorazones();
+
+      const fecha = localStorage.getItem('citaElegida');
+      setTimeout(() => {
+        alert(`¡Nuestra cita será el ${fecha} y comeremos ${comida}! ❤️‍🔥💃`);
+      }, 1000);
+    }
+
+    function lanzarCorazones() {
+      for (let i = 0; i < 20; i++) {
+        const corazon = document.createElement('div');
+        corazon.classList.add('corazon-fuego');
+        corazon.style.left = Math.random() * 100 + 'vw';
+        corazon.style.top = Math.random() * 50 + 30 + 'vh';
+        document.body.appendChild(corazon);
+        setTimeout(() => corazon.remove(), 1000);
+      }
+    }
+
+    function copiarMensaje() {
+      const fecha = localStorage.getItem('citaElegida');
+      const comida = localStorage.getItem('comidaElegida');
+      const mensaje = encodeURIComponent(`Elegí el día ${fecha} para nuestra cita y quiero comer ${comida}`);
+      window.open(`https://wa.me/525520217039?text=${mensaje}`, '_blank');
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Dragon feroz</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Press Start 2P', cursive;
+      text-align: center;
+      background-image: url('https://wallpapers.com/images/hd/pastel-watercolor-background-umwvzsva97niwggl.jpg'); 
+      background-size: cover;
+      background-position: center;
+      overflow: hidden;
+      position: relative;
+      color: white;
+      min-height: 100vh; 
+      overflow-x: hidden;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+
+    h1 {
+      margin: 10px 0 5px 0;
+      margin-top: 50px;
+      font-size: 50px;
+      color:rgb(45, 10, 78);
+    }
+
+    button {
+      padding: 12px 24px;
+      font-size: 18px;
+      margin: 15px;
+      background-color: #289d85;
+      color: #000;
+      border: 4px solid #000;
+      border-radius: 0; 
+      font-family: 'Press Start 2P', cursive;
+      box-shadow: 4px 4px 0 #000;
+      cursor: pointer;
+      transition: all 0.1s;
+    }
+
+    button:hover {
+      background-color: #289d85;
+      box-shadow: 2px 2px 0 #000;
+      transform: translate(2px, 2px);
+    }
+
+    .efecto {
+      position: fixed;
+      top: 0;
+      width: 40px; 
+      height: 40px;
+      pointer-events: none;
+      z-index: 9999;
+      animation-name: caer;
+      animation-timing-function: linear;
+      animation-iteration-count: 1;
+    }
+  
+    @keyframes caer {
+    0% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(100vh);
+      opacity: 0.5;
+    }
+    }
+    img {
+      max-width: 60%;
+      height: auto;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 28px;
+      }
+
+      button {
+        font-size: 18px;
+        padding: 12px 25px;
+      }
+    }
+
+    #contenido {
+      margin-top: 20px; 
+      position: relative;
+      z-index: 5;
+      }
+
+    #contenido h2 {
+      font-size: 18px;
+      margin: 10px auto;
+      max-width: 80%;
+      line-height: 1.5;
+      margin: 5px 0;
+      text-align: center;
+    }
+
+    #contenido.si h2 {
+      color: #00a2ff;
+    }
+
+    #contenido.no h2 {
+      color: #00a2ff;
+    }
+
+    #suelo {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      flex-wrap: wrap;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    #montoncito {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100px;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    #botonExtra {
+      padding: 12px 24px;
+      font-size: 14px;
+      margin-top: 20px;
+      background-color: #7ac3cb;
+      color: #000;
+      border: 3px solid #000;
+      border-radius: 0;
+      font-family: 'Press Start 2P', cursive;
+      box-shadow: 3px 3px 0 #000;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    #botonExtra:hover {
+      background-color: #7ac3cb;
+      transform: translate(2px, 2px);
+      box-shadow: 1px 1px 0 #000;
+    }
+
+
+  </style>
+</head>
+<body>
+
+  <h1>¿Quieres tener una cita conmigo? 👀💖</h1>
+
+  <button onclick="elegir('si')">Sip</button>
+  <button onclick="elegir('no')">No porque hueles feo</button>
+
+  <div id="contenido"></div>
+
+  <script>
+    let intervalo;
+
+    function elegir(opcion) {
+      const contenido = document.getElementById('contenido');
+      document.querySelectorAll('button').forEach(btn => btn.style.display = 'none');
+
+      contenido.className = '';
+      contenido.classList.add(opcion); 
+
+      if (opcion === 'si') {
+        contenido.innerHTML = `
+          <h2>Yuhuuu! Vamos a planearlaaa 💕</h2>
+          <img src="gif_feliz.gif" alt="Feliz">
+          <br>
+          <button id="botonExtra" onclick="location.href='calendario.html'">Da clic aquí 🌸</button>
+        `;
+        intervalo = setInterval(() => crearEfecto('corazon'), 250);
+      } else {
+        contenido.innerHTML = `
+          <h2> -.- </h2>
+          <h2> Te daré otra oportunidad, piensalo... </h2>
+          <img src="triste.png" alt="Triste">
+        `;
+        intervalo = setInterval(() => crearEfecto('lagrima'), 250);
+      }
+    }
+
+    function crearEfecto(tipo) {
+      const elemento = document.createElement('img');
+      elemento.classList.add('efecto');
+
+      if (tipo === 'corazon') {
+        elemento.src = 'corazon_sin_fondo.png';
+        elemento.alt = 'Corazón';
+      } else {
+        elemento.src = 'lagrima.png';
+        elemento.alt = 'Lágrima';
+      }
+
+      elemento.style.left = Math.random() * 100 + 'vw';
+      elemento.style.animationDuration = (Math.random() * 2 + 3) + 's';
+
+      document.body.appendChild(elemento);
+
+      elemento.addEventListener('animationend', () => {
+        elemento.style.animation = 'none';
+        elemento.style.position = 'absolute';
+        elemento.style.top = 'unset';
+        elemento.style.left = Math.random() * 90 + 'vw';
+        elemento.style.bottom = Math.random() * 10 + 'px';
+        elemento.style.transform = `rotate(${Math.random() * 360}deg) scale(${0.8 + Math.random() * 0.4})`;
+
+        document.getElementById('montoncito').appendChild(elemento);
+      });
+    }
+
+    const cita = localStorage.getItem('citaElegida');
+    if (cita) {
+      console.log("Eligió la cita para:", cita);
+      // o mostrarlo en pantalla si quieres
+    }
+
+
+  </script>
+<div id="montoncito"></div>
+</body>
+</html>
