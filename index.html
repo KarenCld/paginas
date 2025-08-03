@@ -8,25 +8,18 @@
   <style>
     body {
       margin: 0;
-      padding: 0;
+      padding: 20px;
       font-family: 'Press Start 2P', cursive;
       text-align: center;
       background-image: url('https://wallpapers.com/images/hd/pastel-watercolor-background-umwvzsva97niwggl.jpg'); 
       background-size: cover;
-      background-position: center;
+      background-position: bottom center;
       background-attachment: fixed;
-      overflow: hidden;
-      position: relative;
       color: white;
-      min-height: 100vh; 
+      min-height: 100vh;
       overflow-x: hidden;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
     }
-    
+
     html, body {
       margin: 0;
       padding: 0;
@@ -94,84 +87,61 @@
 
     @media (max-width: 600px) {
       h1 {
-        font-size: 28px;
+        font-size: 22px;
+        line-height: 1.4;
+        margin: 20px 0;
       }
 
-      button {
-        font-size: 18px;
-        padding: 12px 25px;
-      }
-    }
-
-    #contenido {
-      margin-top: 20px; 
-      position: relative;
-      z-index: 5;
+      button, #botonExtra {
+        width: 90%;
+        font-size: 16px;
+        padding: 10px;
+        margin: 10px auto;
       }
 
-    #contenido h2 {
-      font-size: 18px;
-      margin: 10px auto;
-      width: 90%;
-      max-width: 80%;
-      line-height: 1.5;
-      margin: 5px 0;
-      text-align: center;
-    }
-
-    #contenido.si h2 {
-      color: #00a2ff;
-    }
-
-    #contenido.no h2 {
-      color: #00a2ff;
-    }
-
-    #suelo {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      max-width: 80%;
-      height: 100px;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      flex-wrap: wrap;
-      pointer-events: none;
-      z-index: 1;
-    }
-
-    #montoncito {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      max-width: 80%;
-      height: 100px;
-      pointer-events: none;
-      z-index: 2;
-    }
-
-    #botonExtra {
-      padding: 12px 24px;
-      font-size: 14px;
-      margin-top: 20px;
-      background-color: #7ac3cb;
-      color: #000;
-      border: 3px solid #000;
-      border-radius: 0;
-      font-family: 'Press Start 2P', cursive;
-      box-shadow: 3px 3px 0 #000;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-
-    #botonExtra:hover {
-      background-color: #7ac3cb;
-      transform: translate(2px, 2px);
-      box-shadow: 1px 1px 0 #000;
-    }
+      #contenido {
+        margin-top: 20px; 
+        position: relative;
+        z-index: 5;
+        }
+  
+      #contenido h2 {
+        font-size: 14px;
+      }
+  
+      #contenido.si h2 {
+        color: #00a2ff;
+      }
+  
+      #contenido.no h2 {
+        color: #00a2ff;
+      }
+  
+      #suelo {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        max-width: 80%;
+        height: 100px;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        flex-wrap: wrap;
+        pointer-events: none;
+        z-index: 1;
+      }
+  
+      #montoncito {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        max-width: 80%;
+        height: 100px;
+        pointer-events: none;
+        z-index: 2;
+      }
     
     @media (max-width: 600px) {
       body {
@@ -182,13 +152,6 @@
       h1, h2 {
         font-size: 1.5em;
         text-align: center;
-      }
-
-      button {
-        width: 100%;
-        padding: 12px;
-        margin: 10px 0;
-        font-size: 18px;
       }
 
       #contenido img {
@@ -277,3 +240,4 @@
 <div id="montoncito"></div>
 </body>
 </html>
+
