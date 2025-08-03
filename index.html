@@ -28,32 +28,26 @@
     }
 
 
-    h1 {
-      margin: 10px 0 5px 0;
-      margin-top: 50px;
-      font-size: 50px;
-      color:rgb(45, 10, 78);
+    h1, h2 {
+      font-size: 16px;
+      line-height: 1.4;
+      margin: 10px 0;
     }
-
+    
+    input[type="date"], select {
+      width: 100%;
+      font-size: 14px;
+      padding: 10px;
+      margin-top: 10px;
+    }
+    
     button {
-      padding: 12px 24px;
-      font-size: 18px;
-      margin: 15px;
-      background-color: #289d85;
-      color: #000;
-      border: 4px solid #000;
-      border-radius: 0; 
-      font-family: 'Press Start 2P', cursive;
-      box-shadow: 4px 4px 0 #000;
-      cursor: pointer;
-      transition: all 0.1s;
+      width: 100%;
+      font-size: 16px;
+      padding: 12px;
+      margin: 10px 0;
     }
 
-    button:hover {
-      background-color: #289d85;
-      box-shadow: 2px 2px 0 #000;
-      transform: translate(2px, 2px);
-    }
 
     .efecto {
       position: fixed;
@@ -85,18 +79,19 @@
       margin-top: 10px;
     }
 
-    @media (max-width: 600px) {
+   @media (min-width: 768px) {
       h1 {
         font-size: 22px;
-        line-height: 1.4;
-        margin: 20px 0;
+      }
+    
+      h2 {
+        font-size: 18px;
       }
 
       button, #botonExtra {
-        width: 90%;
+        width: auto;
         font-size: 16px;
-        padding: 10px;
-        margin: 10px auto;
+        padding: 10px 20px;
       }
 
       #contenido {
@@ -240,4 +235,5 @@
 <div id="montoncito"></div>
 </body>
 </html>
+
 
