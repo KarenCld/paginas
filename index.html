@@ -173,6 +173,23 @@
       transform: translate(2px, 2px);
       box-shadow: 1px 1px 0 #000;
     }
+
+    #contenidoPrincipal {
+      height: calc(100vh - 100px); /* deja espacio para los montoncitos */
+      overflow: hidden;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+
+    #suelo {
+      height: 100px; 
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      z-index: 1;
+      pointer-events: none;
+    }
     
     @media (max-width: 600px) {
       body {
@@ -196,19 +213,25 @@
         max-width: 100%;
         height: auto;
       }
+
+      #contenido h2 {
+        font-size: 14px;
+        text-align: center;
+      }
+
     }
 
 
   </style>
 </head>
 <body>
-
+  <div id="contenidoPrincipal">
   <h1>¿Quieres tener una cita conmigo? 👀💖</h1>
-
   <button onclick="elegir('si')">Sip</button>
   <button onclick="elegir('no')">No porque hueles feo</button>
-
   <div id="contenido"></div>
+  </div>
+  <div id="suelo"></div>
 
   <script>
     let intervalo;
@@ -234,7 +257,7 @@
             <h2> Te daré otra oportunidad, piénsalo... </h2>
             <img src="triste.png" alt="Triste">
             <br>
-            <button onclick="location.reload()">Pensalo' otra vez 👊🏼</button>
+            <button id="botonExtra" onclick="location.reload()">Pensalo' otra vez 👊🏼</button>
           `;
         intervalo = setInterval(() => crearEfecto('lagrima'), 250);
       }
@@ -264,8 +287,8 @@
         elemento.style.left = Math.random() * 90 + 'vw';
         elemento.style.bottom = Math.random() * 10 + 'px';
         elemento.style.transform = `rotate(${Math.random() * 360}deg) scale(${0.8 + Math.random() * 0.4})`;
-
-        document.getElementById('montoncito').appendChild(elemento);
+      
+        document.getElementById('suelo').appendChild(elemento);
       });
     }
 
@@ -280,4 +303,5 @@
 <div id="montoncito"></div>
 </body>
 </html>
+
 
