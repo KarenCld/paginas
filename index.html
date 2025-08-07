@@ -29,12 +29,9 @@
     }
     
     html, body {
-      margin: 0;
-      padding: 0;
-      height: 100dvh;
+      height: calc(var(--vh, 1vh) * 100);
       overflow: hidden;
     }
-
 
     h1 {
       margin: 10px 0 5px 0;
@@ -298,11 +295,19 @@
       // o mostrarlo en pantalla si quieres
     }
 
+    function ajustarAltura() {
+      const vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+    }
+    
+    ajustarAltura();
+    window.addEventListener('resize', ajustarAltura);
 
   </script>
 <div id="montoncito"></div>
 </body>
 </html>
+
 
 
 
