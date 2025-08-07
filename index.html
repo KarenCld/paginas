@@ -230,10 +230,12 @@
         intervalo = setInterval(() => crearEfecto('corazon'), 250);
       } else {
         contenido.innerHTML = `
-          <h2> -.- </h2>
-          <h2> Te daré otra oportunidad, piensalo... </h2>
-          <img src="triste.png" alt="Triste">
-        `;
+            <h2> -.- </h2>
+            <h2> Te daré otra oportunidad, piénsalo... </h2>
+            <img src="triste.png" alt="Triste">
+            <br>
+            <button onclick="location.reload()">Pensalo' otra vez 👊🏼</button>
+          `;
         intervalo = setInterval(() => crearEfecto('lagrima'), 250);
       }
     }
@@ -278,3 +280,4 @@
 <div id="montoncito"></div>
 </body>
 </html>
+
