@@ -37,7 +37,7 @@
 
     input[type="date"] {
       font-family: 'Press Start 2P', cursive;
-      font-size: 15px;
+      font-size: 12px;
       padding: 10px;
       border: 2px solid #000;
       background-color: #4798d2;
@@ -53,9 +53,11 @@
       border: 3px solid #000;
       border-radius: 0; 
       font-family: 'Press Start 2P', cursive;
-      box-shadow: 4px 4px 0 #000;
+      box-shadow: 3px 3px 0 #000;
       cursor: pointer;
       transition: all 0.1s;
+      max-width: 90%;
+      margin: 10px auto;
     }
 
     button:hover {
@@ -105,9 +107,8 @@
 
       button {
         width: 90%;
-        padding: 12px;
-        margin: 10px 0;
-        font-size: 17px;
+        padding: 10px;
+        font-size: 15px;
       }
 
       #contenido img {
@@ -124,7 +125,7 @@
   <input type="date" id="fechaCita">
   <button onclick="mostrarMenu()">Siguiente</button>
 
-  <div id="menuComida" style="display:none; margin-top: 20px;">
+  <div id="menuComida" style="display:none; margin-top: 17px;">
     <h1 style="font-size: 14px;">Dame una pista de qué te gustaría comer 🍕🍣🍜</h1>
     <select id="opcionComida">
       <option value="">-- Elige una opción --</option>
@@ -134,7 +135,7 @@
       <option value="Garnachitas">Garnachitas 🌮</option>
     </select>
     <br>
-    <h1 style="font-size: 14px;">Primero confirma la cita y después copia para enviarmelo c:</h1>
+    <h1 style="font-size: 12px;">Primero confirma la cita y después copia para enviarmelo c:</h1>
     <button onclick="confirmarCita()">Confirmar cita</button>
     <button onclick="copiarMensaje()">📋 Copiar para enviar a Karen</button>
 
@@ -188,6 +189,7 @@
 
 </body>
 </html>
+
 
 
 
