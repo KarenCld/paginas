@@ -33,13 +33,13 @@
     h1 {
       margin: 10px 0 5px 0;
       margin-top: 50px;
-      font-size: 25px;
+      font-size: 30px;
       color:rgb(45, 10, 78);
     }
 
     input[type="date"] {
       font-family: 'Press Start 2P', cursive;
-      font-size: 12px;
+      font-size: 20px;
       padding: 10px;
       border: 2px solid #000;
       background-color: #4798d2;
@@ -49,7 +49,7 @@
 
     button {
       padding: 12px 24px;
-      font-size: 18px;
+      font-size: 20px;
       margin: 15px;
       background-color: #289d85;
       color: #000;
@@ -185,12 +185,13 @@
     function copiarMensaje() {
       const fecha = localStorage.getItem('citaElegida');
       const comida = localStorage.getItem('comidaElegida');
-      const mensaje = encodeURIComponent(`Elegí el día ${fecha} para nuestra cita y quiero comer ${comida}`);
+      const mensaje = encodeURIComponent(`Timoti nuestra cita será el ${fecha} y quiero comer ${comida}`);
       window.open(`https://wa.me/525520217039?text=${mensaje}`, '_blank');
     }
   </script>
 
 </body>
 </html>
+
 
 
