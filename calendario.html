@@ -37,7 +37,7 @@
 
     input[type="date"] {
       font-family: 'Press Start 2P', cursive;
-      font-size: 12px;
+      font-size: 10px;
       padding: 10px;
       border: 2px solid #000;
       background-color: #4798d2;
@@ -46,16 +46,14 @@
     }
 
     button {
-      padding: 12px 24px;
-      margin: 15px;
-      background-color: #9a47a3;
+      padding: 10px 20px;
+      font-size: 14px;
+      font-family: 'Press Start 2P', cursive;
+      background-color: #00e5ff;
       color: #000;
       border: 3px solid #000;
-      border-radius: 0; 
-      font-family: 'Press Start 2P', cursive;
       box-shadow: 3px 3px 0 #000;
       cursor: pointer;
-      transition: all 0.1s;
       max-width: 90%;
       margin: 10px auto;
     }
@@ -78,6 +76,13 @@
       pointer-events: none;
       z-index: 999;
     }
+
+    #menuComida h2 {
+      font-size: 14px;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
 
     @keyframes explotar {
       0% {
@@ -115,6 +120,10 @@
         max-width: 100%;
         height: auto;
       }
+
+      #menuComida h2 {
+       font-size: 12px;
+  }
     }
 
   </style>
@@ -126,7 +135,7 @@
   <button onclick="mostrarMenu()">Siguiente</button>
 
   <div id="menuComida" style="display:none; margin-top: 17px;">
-    <h1 style="font-size: 14px;">Dame una pista de qué te gustaría comer 🍕🍣🍜</h1>
+    <h1 style="font-size: 12px;">Dame una pista de qué te gustaría comer 🍕🍣🍜</h1>
     <select id="opcionComida">
       <option value="">-- Elige una opción --</option>
       <option value="En un lugar con temática">En un lugar con temática 👒</option>
@@ -135,7 +144,7 @@
       <option value="Garnachitas">Garnachitas 🌮</option>
     </select>
     <br>
-    <h1 style="font-size: 12px;">Primero confirma la cita y después copia para enviarmelo c:</h1>
+    <h1 style="font-size: 10px;">Primero confirma la cita y después copia para enviarmelo c:</h1>
     <button onclick="confirmarCita()">Confirmar cita</button>
     <button onclick="copiarMensaje()">📋 Copiar para enviar a Karen</button>
 
@@ -189,6 +198,7 @@
 
 </body>
 </html>
+
 
 
 
