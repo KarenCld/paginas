@@ -21,7 +21,7 @@
       color: white;
       min-height: 100vh; 
       overflow-x: hidden;
-      overflow-y: auto;
+      overflow-y: hidden;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -29,9 +29,13 @@
     }
     
     html, body {
-      height: calc(var(--vh, 1vh) * 100);
-      overflow: hidden;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      overflow: hidden; 
+      position: relative;
     }
+
 
     h1 {
       margin: 10px 0 5px 0;
@@ -126,19 +130,14 @@
     }
 
     #suelo {
+      height: 100px;
       position: absolute;
       bottom: 0;
-      left: 0;
       width: 100%;
-      max-width: 80%;
-      height: 100px;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      flex-wrap: wrap;
-      pointer-events: none;
       z-index: 1;
+      pointer-events: none;
     }
+
 
     #montoncito {
       position: absolute;
@@ -172,7 +171,7 @@
     }
 
     #contenidoPrincipal {
-      height: calc(100vh - 100px); /* deja espacio para los montoncitos */
+      height: calc(100vh - 100px); /* deja espacio visible para montoncitos */
       overflow: hidden;
       padding: 10px;
       box-sizing: border-box;
@@ -307,6 +306,7 @@
 <div id="montoncito"></div>
 </body>
 </html>
+
 
 
 
