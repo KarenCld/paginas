@@ -40,7 +40,7 @@
     box-shadow: 2px 2px 0 #000;
     font-family: 'Press Start 2P', cursive;
     text-align: center;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     width: auto;
     max-width: 80%;
     background-color: #4798d2;
@@ -104,11 +104,12 @@
   
   @media (max-width: 600px) {
     h1 { font-size: 20px; }
-    h2 { font-size: 12px; }
+    h2 { font-size: 11px; }
     input[type="date"], button {
       width: 80%;
       font-size: 12px;
       text-align: center;
+      margin-bottom: 15px;
     }
   }
 </style>
@@ -170,7 +171,7 @@ function mostrarMenu() {
         alert(`¡Nuestra cita será el ${fecha} y comeremos ${comida}! ❤️‍🔥💃`);
         // Mostrar botón igual que los demás
         document.getElementById('resultado').innerHTML = `
-          <button onclick="window.open('${url}', '_blank')">📅 Agregar a Google Calendar</button>
+          <button onclick="window.open('${url}', '_blank')">📅 Agregar a mi calendario</button>
         `;
       }, 1000);
     }
