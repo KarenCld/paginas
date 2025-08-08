@@ -108,14 +108,15 @@ function crearEfecto(tipo) {
   elemento.style.left = Math.random() * 100 + 'vw';
   elemento.style.top = '-50px';
   elemento.style.width = '30px';
+  elemento.style.zIndex = '999'; /* para que se vea encima */
   elemento.style.animation = 'caer 4s linear forwards';
-  document.getElementById('suelo').appendChild(elemento);
+  document.body.appendChild(elemento); 
   setTimeout(() => elemento.remove(), 4000);
 }
 </script>
 <style>
 @keyframes caer {
-  to { transform: translateY(calc(100vh - 150px)); }
+  transform: translateY(100vh); }
 }
 </style>
 </body>
