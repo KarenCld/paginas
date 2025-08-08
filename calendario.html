@@ -94,12 +94,25 @@
 </style>
 </head>
 <body>
-<h1>Selecciona la fecha de nuestra cita 💖</h1>
-<h2>Primero confirma la cita y luego elige tu comida</h2>
-<input type="date" id="fecha">
-<br>
-<button onclick="confirmarFecha()">Confirmar</button>
-<div id="resultado"></div>
+<h1>Elige el día de nuestra cita 💕</h1>
+  <input type="date" id="fechaCita">
+  <button onclick="mostrarMenu()">Siguiente</button>
+
+  <div id="menuComida" style="display:none; margin-top: 20px;">
+    <h1 style="font-size: 14px;">Dame una pista de qué te gustaría comer 🍕🍣🍜</h1>
+    <select id="opcionComida">
+      <option value="">-- Elige una opción --</option>
+      <option value="En un lugar con temática">En un lugar con temática 👒</option>
+      <option value="Comida Japonesa">Comida Japonesa 🍣🍜</option>
+      <option value="Comida gordo gordo">Comida gordo gordo 🍔🍕</option>
+      <option value="Garnachitas">Garnachitas 🌮</option>
+    </select>
+    <br>
+    <h1 style="font-size: 14px;">Primero confirma la cita y después copia para enviarmelo c:</h1>
+    <button onclick="confirmarCita()">Confirmar cita</button>
+    <button onclick="copiarMensaje()">📋 Copiar para enviar a Karen</button>
+
+  </div>
 <script>
 function mostrarMenu() {
       const fecha = document.getElementById('fechaCita').value;
