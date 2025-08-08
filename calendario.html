@@ -12,13 +12,14 @@
     background: url('https://wallpapers.com/images/hd/pastel-watercolor-background-umwvzsva97niwggl.jpg') center bottom no-repeat;
     background-size: cover;
     margin: 0;
-    padding: 0px;
+    padding-top: 80px;
     text-align: center;
     color: white;
     height: 100vh;
     align-items: center; 
     justify-content: center; 
     flex-direction: column;
+    display: flex;
   }
   h1 {
     font-size: 18px;
@@ -27,7 +28,7 @@
     color:rgb(62, 7, 113);
   }
   h2 {
-    font-size: 14px;
+    font-size: 13px;
     margin-bottom: 10px;
     text-shadow: 1px 1px #000;
     color:rgb(62, 7, 113);
@@ -60,6 +61,17 @@
   button:hover {
     background-color: #ff80bf;
     background-color: #7a1da2;
+  }
+
+  select {
+    font-size: 12px;       /* texto más pequeño */
+    padding: 5px 10px;     /* menos espacio interno */
+    width: auto;           /* se ajusta al contenido */
+    max-width: 80%;        /* no ocupa toda la pantalla */
+    font-family: 'Press Start 2P', cursive; /* para mantener estilo pixel */
+    border: 3px solid #000;
+    box-shadow: 3px 3px 0 #000;
+    background-color: #fff;
   }
 
   .corazon-fuego {
@@ -96,6 +108,7 @@
     input[type="date"], button {
       width: 80%;
       font-size: 12px;
+      text-align: center;
     }
   }
 </style>
@@ -106,7 +119,7 @@
   <button onclick="mostrarMenu()">Siguiente</button>
 
   <div id="menuComida" style="display:none; margin-top: 20px;">
-    <h1 style="font-size: 14px;">Dame una pista de qué te gustaría comer 🍕🍣🍜</h1>
+    <h1 style="font-size: 15px;">Dame una pista de qué te gustaría comer 🍕🍣🍜</h1>
     <select id="opcionComida">
       <option value="">-- Elige una opción --</option>
       <option value="En un lugar con temática">En un lugar con temática 👒</option>
@@ -115,9 +128,9 @@
       <option value="Garnachitas">Garnachitas 🌮</option>
     </select>
     <br>
-    <h1 style="font-size: 14px;">Primero confirma la cita y después copia para enviarmelo c:</h1>
+    <h1 style="font-size: 15px;">Primero confirma la cita y después copia para enviarmelo c:</h1>
     <button onclick="confirmarCita()">Confirmar cita</button>
-    <button onclick="copiarMensaje()">📋 Copiar para enviar a Karen</button>
+    <button onclick="copiarMensaje()">📋 Envia a Timoti</button>
 
   </div>
 <script>
@@ -134,7 +147,7 @@ function mostrarMenu() {
     function confirmarCita() {
       const comida = document.getElementById('opcionComida').value;
       if (!comida) {
-        alert("Elige una comida, no podemos tener una cita con el estómago vacío 🍽️");
+        alert("Elige una comida, TENEMOS QUE COMEEER 🍽️");
         return;
       }
 
@@ -161,7 +174,7 @@ function mostrarMenu() {
     function copiarMensaje() {
       const fecha = localStorage.getItem('citaElegida');
       const comida = localStorage.getItem('comidaElegida');
-      const mensaje = encodeURIComponent(`Elegí el día ${fecha} para nuestra cita y quiero comer ${comida}`);
+      const mensaje = encodeURIComponent(`Timoti, elegí el ${fecha} para nuestra cita y quiero comer ${comida}`);
       window.open(`https://wa.me/525520217039?text=${mensaje}`, '_blank');
     }
 </script>
