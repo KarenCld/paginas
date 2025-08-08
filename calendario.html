@@ -131,6 +131,7 @@
     <h1 style="font-size: 15px;">Primero confirma la cita y después copia para enviarmelo c:</h1>
     <button onclick="confirmarCita()">Confirmar cita</button>
     <button onclick="copiarMensaje()">📋 Envia a Timoti</button>
+    <div id="resultado"></div>
 
   </div>
 <script>
@@ -150,15 +151,32 @@ function mostrarMenu() {
         alert("Elige una comida, TENEMOS QUE COMEEER 🍽️");
         return;
       }
-
+    
       localStorage.setItem('comidaElegida', comida);
       lanzarCorazones();
-
+    
       const fecha = localStorage.getItem('citaElegida');
+    
+      // Crear enlace para Google Calendar
+      const inicio = fecha.replace(/-/g, '') + 'T200000Z'; // 8 PM UTC
+      const fin = fecha.replace(/-/g, '') + 'T210000Z';    // 9 PM UTC
+      const titulo = encodeURIComponent('Cita Especial 💖');
+      const detalles = encodeURIComponent(`Nuestra cita será el ${fecha} y comeremos ${comida} 🍽️`);
+      const ubicacion = encodeURIComponent('Tu lugar favorito');
+    
+      const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${titulo}&dates=${inicio}/${fin}&details=${detalles}&location=${ubicacion}`;
+    
       setTimeout(() => {
         alert(`¡Nuestra cita será el ${fecha} y comeremos ${comida}! ❤️‍🔥💃`);
+        // Mostrar botón/link de Google Calendar en pantalla
+        document.getElementById('resultado').innerHTML = `
+          <a href="${url}" target="_blank" style="display:inline-block;margin-top:10px;background:#ff4da6;color:white;padding:10px 15px;border:3px solid black;box-shadow:3px 3px 0 black;font-family:'Press Start 2P',cursive;text-decoration:none;">
+            📅 Agregar a Google Calendar
+          </a>
+        `;
       }, 1000);
     }
+
 
     function lanzarCorazones() {
       for (let i = 0; i < 20; i++) {
