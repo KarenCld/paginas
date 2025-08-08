@@ -116,8 +116,14 @@ function crearEfecto(tipo) {
 </script>
 <style>
 @keyframes caer {
-  transform: translateY(100vh); }
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(100vh);
+  }
 }
+
 </style>
 </body>
 </html>
