@@ -8,7 +8,7 @@
 <style>
   body {
     font-family: 'Press Start 2P', cursive;
-    background: url('fondo_calendario.png') bottom center no-repeat;
+    background: url('https://wallpapers.com/images/hd/pastel-watercolor-background-umwvzsva97niwggl.jpg') center bottom no-repeat;
     background-size: cover;
     margin: 0;
     padding: 20px;
@@ -24,6 +24,7 @@
     font-size: 14px;
     margin-bottom: 10px;
     text-shadow: 1px 1px #000;
+    color:rgb(62, 7, 113);
   }
   input[type="date"] {
     padding: 10px;
@@ -34,13 +35,15 @@
     margin-bottom: 15px;
     width: auto;
     max-width: 80%;
+    background-color: #4798d2;
+    color: #000;
   }
   button {
     padding: 10px 20px;
     font-size: 14px;
     font-family: 'Press Start 2P', cursive;
-    background-color: #ff4da6;
-    color: #fff;
+    background-color: #9a47a3;
+    color: #000;
     border: 3px solid #000;
     box-shadow: 3px 3px 0 #000;
     cursor: pointer;
@@ -49,7 +52,37 @@
   }
   button:hover {
     background-color: #ff80bf;
+    background-color: #7a1da2;
   }
+
+  .corazon-fuego {
+      position: absolute;
+      width: 90%;
+      max-width: 30px;
+      height: 30px;
+      background-image: url('corazon_sin_fondo.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      animation: explotar 1s ease-out forwards;
+      pointer-events: none;
+      z-index: 999;
+    }
+
+  @keyframes explotar {
+      0% {
+        transform: scale(0) translateY(0);
+        opacity: 1;
+      }
+      50% {
+        transform: scale(1.5) translateY(-50px);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(0.8) translateY(-100px);
+        opacity: 0;
+      }
+    }
+  
   @media (max-width: 600px) {
     h1 { font-size: 14px; }
     h2 { font-size: 12px; }
@@ -68,20 +101,49 @@
 <button onclick="confirmarFecha()">Confirmar</button>
 <div id="resultado"></div>
 <script>
-function confirmarFecha() {
-  const fecha = document.getElementById('fecha').value;
-  if (fecha) {
-    document.getElementById('resultado').innerHTML = `
-      <h2>Nuestra cita será el ${fecha} 💕</h2>
-      <h2>Elige tu comida favorita 🍔🍕🍣</h2>
-      <button>Pizza</button>
-      <button>Sushi</button>
-      <button>Hamburguesa</button>
-    `;
-  } else {
-    alert('Por favor, selecciona una fecha.');
-  }
-}
+function mostrarMenu() {
+      const fecha = document.getElementById('fechaCita').value;
+      if (fecha) {
+        localStorage.setItem('citaElegida', fecha);
+        document.getElementById('menuComida').style.display = 'block';
+      } else {
+        alert("Tienes que elegir una fechaaaaa");
+      }
+    }
+
+    function confirmarCita() {
+      const comida = document.getElementById('opcionComida').value;
+      if (!comida) {
+        alert("Elige una comida, no podemos tener una cita con el estómago vacío 🍽️");
+        return;
+      }
+
+      localStorage.setItem('comidaElegida', comida);
+      lanzarCorazones();
+
+      const fecha = localStorage.getItem('citaElegida');
+      setTimeout(() => {
+        alert(`¡Nuestra cita será el ${fecha} y comeremos ${comida}! ❤️‍🔥💃`);
+      }, 1000);
+    }
+
+    function lanzarCorazones() {
+      for (let i = 0; i < 20; i++) {
+        const corazon = document.createElement('div');
+        corazon.classList.add('corazon-fuego');
+        corazon.style.left = Math.random() * 100 + 'vw';
+        corazon.style.top = Math.random() * 50 + 30 + 'vh';
+        document.body.appendChild(corazon);
+        setTimeout(() => corazon.remove(), 1000);
+      }
+    }
+
+    function copiarMensaje() {
+      const fecha = localStorage.getItem('citaElegida');
+      const comida = localStorage.getItem('comidaElegida');
+      const mensaje = encodeURIComponent(`Elegí el día ${fecha} para nuestra cita y quiero comer ${comida}`);
+      window.open(`https://wa.me/525520217039?text=${mensaje}`, '_blank');
+    }
 </script>
 </body>
 </html>
