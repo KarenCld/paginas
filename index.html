@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cita Pixelada</title>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow: hidden;
+    font-family: 'Press Start 2P', cursive;
+    background: url('fondo.png') bottom center no-repeat;
+    background-size: cover;
+  }
+  #contenidoPrincipal {
+    height: calc(100vh - 100px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+  h1, h2 {
+    margin: 10px 0;
+    color: white;
+    text-shadow: 2px 2px #000;
+  }
+  button {
+    padding: 10px 20px;
+    font-size: 14px;
+    font-family: 'Press Start 2P', cursive;
+    background-color: #ff4da6;
+    color: #fff;
+    border: 3px solid #000;
+    box-shadow: 3px 3px 0 #000;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  button:hover {
+    background-color: #ff80bf;
+  }
+  #suelo {
+    height: 100px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    z-index: 1;
+    pointer-events: none;
+  }
+</style>
+</head>
+<body>
+<div id="contenidoPrincipal">
+  <h1>¿Quieres tener una cita conmigo? 👀💖</h1>
+  <button onclick="elegir('si')">Sip</button>
+  <button onclick="elegir('no')">No porque hueles feo</button>
+  <div id="contenido"></div>
+</div>
+<div id="suelo"></div>
+<script>
+let intervalo;
+
+function elegir(opcion) {
+  document.querySelectorAll('#contenidoPrincipal button').forEach(btn => btn.style.display = 'none');
+  const contenido = document.getElementById('contenido');
+  if (opcion === 'si') {
+    contenido.innerHTML = `
+      <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;">
+        <h2>Yuhuuu! Vamos a planearlaaa 💕</h2>
+        <img src="gif_feliz.gif" alt="Feliz" style="max-width:100%;height:auto;">
+        <button onclick="window.location.href='calendario.html'">Da clic aquí</button>
+      </div>
+    `;
+    intervalo = setInterval(() => crearEfecto('corazon'), 250);
+  } else {
+    contenido.innerHTML = `
+      <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;">
+        <h2> -.- </h2>
+        <h2>Te daré otra oportunidad, piénsalo...</h2>
+        <img src="triste.png" alt="Triste" style="max-width:100%;height:auto;">
+        <button onclick="location.reload()">Volver al inicio 🔄</button>
+      </div>
+    `;
+    intervalo = setInterval(() => crearEfecto('lagrima'), 250);
+  }
+}
+
+function crearEfecto(tipo) {
+  const elemento = document.createElement('img');
+  elemento.src = tipo === 'corazon' ? 'corazon_sin_fondo.png' : 'lagrima.png';
+  elemento.style.position = 'absolute';
+  elemento.style.left = Math.random() * 100 + 'vw';
+  elemento.style.top = '-50px';
+  elemento.style.width = '30px';
+  elemento.style.animation = 'caer 4s linear forwards';
+  document.getElementById('suelo').appendChild(elemento);
+  setTimeout(() => elemento.remove(), 4000);
+}
+</script>
+<style>
+@keyframes caer {
+  to { transform: translateY(calc(100vh - 150px)); }
+}
+</style>
+</body>
+</html>
